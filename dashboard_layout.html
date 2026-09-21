@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <style>
+            .container{
+               display: grid;
+               grid-template-columns: repeat(4,1fr);
+               gap: 10px;
+               padding: 10px;
+                
+            }
+            .bento-item{
+                background-color: lightblue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+            }
+            .hero{
+                grid-column: span 4;
+                background-color: lightcoral;
+                grid-row: span 2;
+            }
+            .feature-1{
+                background-color: lightgreen;
+                grid-row: span 6;
+                grid-column: span 10;
+                align-items: left;
+                height: 97em;
+            }
+            .feature-2{
+                  background-color: lightgoldenrodyellow;
+            }
+            .feature-3{
+                background-color: lightblue;
+            }
+            .feature-4{
+                background-color: lightcoral;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class = "container">
+          <div class = "bento-item hero">Villian</div>
+          <div class = "bento-item" feature-1>Feature 1</div>
+          <div class = "bento-item" feature-2>Feature 2</div>
+          <div class = "bento-item" feature-3>Feature 3</div>
+          <div class = "bento-item" feature-4>Feature 4</div>
+        </div>
+    </body>
+</html>

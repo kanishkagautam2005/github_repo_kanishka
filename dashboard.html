@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            background-color: #4e7620;
+            font-family:Arial, Helvetica, sans-serif
+        }
+        .dashboard{
+            display: flex;
+        }
+        .sidebar{
+            width:220px;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+        }
+        .main{
+            flex:1;
+            padding: 25px;
+        }
+        .cards{
+            display: flex;
+            gap: 20px;
+        }
+        .card{
+            flex:1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Home</p>
+            <p>Order</p>
+            <p>Products</p>
+        </div>
+        <div class="main">
+            <h1>Sales Dashboard</h1>
+            <p>Welcome to the Dashboard</p>
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Sales</h3>
+                    <p>$25,000</p>
+                </div>
+                <div class="card">
+                    <h3>Total Orders</h3>
+                    <p>150</p>
+                </div>
+                <div class="card">
+                    <h3>Customers</h3>
+                    <p>75</p>
+                </div>
+                <div class="card">
+                    <h3>Profit</h3>
+                    <p>$50</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Pseudo-Class example</title>
+        <style>
+            button:hover{
+                background-color: black;
+                color:white;
+            }
+            button:active{
+                background-color: blue;
+                color:white
+            }
+            a:link{
+                 text-decoration: none;
+                 color:black;
+            }
+            a:visited{
+                text-decoration: none;
+                color:green;
+            }
+            input:checked{
+                accent-color: red;
+                box-shadow: 1px 1px 5px black;
+            }
+            li:nth-child(odd){
+                background-color: lightgray;
+            }
+            li:nth-child(even){
+                background-color: lightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <button>Click</button>
+        <a href = "#">Link</a>
+        <input type = "checkbox" checked>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+    </body>
+</html>

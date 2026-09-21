@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style>
+            :root{
+
+                --primary-color: black;
+                --secondary-color: yellow;
+                --multiplier: 2
+            }
+            div{
+                --primary-color: red;
+                --secondary-color: black;
+            }
+            p{
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                font-size: calc(val(--multiplier)*2);
+            }
+        </style>
+    </head>
+    <body>
+        <p>Hello World!</p>
+        <div><p>Hello World</p></div>
+    </body>
+</html>

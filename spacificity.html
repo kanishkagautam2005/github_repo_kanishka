@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <style>
+            @layer base,special;
+            @layer base{
+                body{
+                    background-color: white;
+                }
+                p{
+                    font-size: 30px;
+                    color: red;
+                }
+            }
+            @layer special{
+                body{
+                    background-color: black;
+                }
+                p{
+                    color: blue;
+                }
+            }
+            button{
+                font-size: 20px;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                background-color: white;
+                border: 1px solid grey;
+                box-shadow: 3px 3px 5px grey;
+            }
+            button:active{
+                box-shadow: inset 3px 3px 5px grey;
+            }
+            button{
+                border: 1px solid white;
+                box-shadow: inset 3px 3px 5px white;
+            }
+            
+        </style>
+    </head>
+    <body>
+       <p>Specificity</p>
+       <button>Click me</button>
+    </body>
+</html>

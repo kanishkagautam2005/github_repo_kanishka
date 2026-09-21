@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            li:hover{
+                color:yellow;
+            }
+            .div:is(h2,h3){
+                background-color: black;
+                color:white;
+            }
+            div:has(h2,h3){
+             box-shadow: 0 0 3px black;   
+            }
+            #class{
+                background-color:aliceblue;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href = :#1></a>1</li>
+            <li><a href = :#2></a>2</li>
+            <li><a href = :#3></a>3</li>
+            <li><a href = :#4></a>4</li>
+            <li><a href = :#5></a>5</li>
+        </ul>
+        <div> 
+            <p> Lorem ipsum</p>
+        </div>
+        <div>
+            <h2>Heading</h2>
+            <h3>heading</h3>
+            <p> Lorem ipsum</p>
+            <div id = "child">
+                <p style = "background-color: red">This is the paragrah with a class</p>
+            </div>
+        </div>
+    </body>
+</html>

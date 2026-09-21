@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            input {
+                border-width: 0px 0px 3px 0px;
+                border-color: black;
+                margin-top: 3%;
+                font-size: 25px;
+            }
+            input:required {
+                border-color: red;
+            }
+            input:optional {
+                border-color: green;
+            }
+            input:enabled {
+                background-color: transparent;
+                border-shadow: 0 0 3px black;
+            }
+            input:disabled {
+                background-color: grey;
+                border-width: 0px;
+            }
+            input:valid{
+                background-color: green;
+
+            }
+            input:invalid{
+                background-color: red;
+            }
+            input:in-range{
+                background-color: aqua;
+            }
+            input:out-of-range{
+                background-color: red;
+            }
+            input:placeholder-shown{
+                border-color: blue;
+            }
+            input:read-only{
+                border-width: 0px;
+                box-shadow: 0 0 0;
+                background-color: grey;
+                color: white;
+            }
+            input:focus{
+                box-shadow: 0 0 3px black;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" placeholder="Required Field" required><br>
+        <input type="text" placeholder="Optional Field"><br>
+        <input type="text" placeholder="Enabled Field"><br>
+        <input type="text" placeholder="Disabled Field" disabled><br>
+        <input type = "email" placeholder = "Email"><br>
+        <input type = "number" min = 10 max = 20><br>
+        <input type = "text" value = "Mr.">
+    </body>
+</html>
