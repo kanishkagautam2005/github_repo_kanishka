@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Analytics Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            bgMain: '#F1F5F9',
+            sidebar: '#0F172A',
+            sidebarText: '#CBD5E1',
+            activeMenu: '#4F46E5',
+            cardBg: '#FFFFFF',
+            heading: '#0F172A',
+            bodyText: '#64748B',
+            borderClr: '#E2E8F0',
+            successClr: '#16A34A',
+            dangerClr: '#DC2626',
+            warningClr: '#D97706',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-bgMain text-bodyText font-sans antialiased min-h-screen flex flex-col md:flex-row">
+
+  <aside class="hidden md:flex flex-col w-[240px] bg-sidebar text-sidebarText min-h-screen sticky top-0 z-30 shrink-0 justify-between p-4">
+    <div>
+      <div class="flex items-center gap-3 px-3 py-3 mb-6 text-white font-bold text-xl">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-base">A</div>
+        <span>AdminPro</span>
+      </div>
+
+      <nav class="space-y-1 text-[14px] font-medium">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-activeMenu text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          Analytics
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Users
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Orders
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          Products
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Settings
+        </a>
+      </nav>
+    </div>
+
+    <div class="flex items-center gap-3 p-2 bg-slate-800/60 rounded-xl">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" class="w-9 h-9 rounded-full object-cover">
+      <div class="overflow-hidden text-xs">
+        <p class="font-semibold text-white truncate">Ayush Tiwari</p>
+        <p class="text-slate-400 truncate">Admin</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-[64px] bg-cardBg border-b border-borderClr px-6 flex items-center justify-between sticky top-0 z-20">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-heading p-1 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="relative w-48 sm:w-64">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" placeholder="Search..." class="w-full pl-9 pr-3 py-1.5 text-sm bg-slate-100/70 border border-transparent rounded-lg focus:bg-white focus:border-borderClr focus:outline-none">
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button class="p-1.5 text-slate-500 hover:text-heading rounded-lg hover:bg-slate-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Profile" class="w-8 h-8 rounded-full object-cover border border-borderClr md:hidden">
+      </div>
+    </header>
+
+    <main class="p-8 space-y-6 flex-1">
+      <h1 class="text-[24px] font-bold text-heading">Dashboard</h1>
+
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-full bg-emerald-50 text-successClr flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-[14px] font-medium text-bodyText">Total Revenue</p>
+          <p class="text-[28px] font-bold text-heading mt-1">₹1,24,532</p>
+          <span class="inline-flex items-center text-xs font-semibold text-successClr mt-2">
+            ↑ 12% <span class="text-slate-400 font-normal ml-1">from last month</span>
+          </span>
+        </div>
+
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+          </div>
+          <p class="text-[14px] font-medium text-bodyText">Total Orders</p>
+          <p class="text-[28px] font-bold text-heading mt-1">892</p>
+          <span class="inline-flex items-center text-xs font-semibold text-successClr mt-2">
+            ↑ 8% <span class="text-slate-400 font-normal ml-1">from last month</span>
+          </span>
+        </div>
+
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-full bg-purple-50 text-indigo-600 flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-[14px] font-medium text-bodyText">Active Users</p>
+          <p class="text-[28px] font-bold text-heading mt-1">3,521</p>
+          <span class="inline-flex items-center text-xs font-semibold text-successClr mt-2">
+            ↑ 14% <span class="text-slate-400 font-normal ml-1">from last month</span>
+          </span>
+        </div>
+
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-10 h-10 rounded-full bg-amber-50 text-warningClr flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+          </div>
+          <p class="text-[14px] font-medium text-bodyText">Conversion Rate</p>
+          <p class="text-[28px] font-bold text-heading mt-1">4.2%</p>
+          <span class="inline-flex items-center text-xs font-semibold text-successClr mt-2">
+            ↑ 2% <span class="text-slate-400 font-normal ml-1">from last month</span>
+          </span>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-[16px] font-semibold text-heading">Revenue Overview</h2>
+            <div class="text-right">
+              <span class="text-lg font-bold text-heading">₹1,24,532</span>
+              <span class="text-xs font-semibold text-successClr ml-2">↑ 12%</span>
+            </div>
+          </div>
+          <div class="h-64 relative flex items-end pt-6">
+            <svg class="w-full h-full overflow-visible" viewBox="0 0 400 150" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,120 Q30,110 60,115 T120,80 T180,95 T240,70 T300,85 T360,30 L400,10 L400,150 L0,150 Z" fill="url(#grad)"/>
+              <path d="M0,120 Q30,110 60,115 T120,80 T180,95 T240,70 T300,85 T360,30 L400,10" fill="none" stroke="#4F46E5" stroke-width="3"/>
+            </svg>
+          </div>
+          <div class="flex justify-between text-xs text-slate-400 pt-2 border-t border-slate-100">
+            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+          </div>
+        </div>
+
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-[16px] font-semibold text-heading">Recent Orders</h2>
+            <a href="#" class="text-xs font-semibold text-indigo-600 hover:underline">View all →</a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-[14px] text-left">
+              <thead>
+                <tr class="text-xs text-slate-400 border-b border-borderClr">
+                  <th class="pb-2 font-medium">Customer</th>
+                  <th class="pb-2 font-medium">Amount</th>
+                  <th class="pb-2 font-medium">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-borderClr">
+                <tr>
+                  <td class="py-3 font-medium text-heading">Rahul Sharma</td>
+                  <td class="py-3">₹2,499</td>
+                  <td class="py-3"><span class="px-2 py-0.5 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-full">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Priya Singh</td>
+                  <td class="py-3">₹4,099</td>
+                  <td class="py-3"><span class="px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">Processing</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Amit Kumar</td>
+                  <td class="py-3">₹1,299</td>
+                  <td class="py-3"><span class="px-2 py-0.5 text-xs font-medium bg-sky-100 text-sky-700 rounded-full">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Neha Gupta</td>
+                  <td class="py-3">₹3,799</td>
+                  <td class="py-3"><span class="px-2 py-0.5 text-xs font-medium bg-emerald-100 text-emerald-700 rounded-full">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Sahil Verma</td>
+                  <td class="py-3">₹5,499</td>
+                  <td class="py-3"><span class="px-2 py-0.5 text-xs font-medium bg-rose-100 text-rose-700 rounded-full">Canceled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-[16px] font-semibold text-heading">Traffic Overview</h2>
+              <p class="text-xs text-slate-400">Total Visitors</p>
+            </div>
+            <div class="text-right">
+              <span class="text-lg font-bold text-heading">8,432</span>
+              <span class="text-xs font-semibold text-successClr ml-2">↑ 18%</span>
+            </div>
+          </div>
+          <div class="h-48 flex items-end justify-between gap-3 pt-6 px-2">
+            <div class="w-full bg-indigo-500 rounded-t h-[40%]"></div>
+            <div class="w-full bg-indigo-500 rounded-t h-[55%]"></div>
+            <div class="w-full bg-indigo-500 rounded-t h-[45%]"></div>
+            <div class="w-full bg-indigo-500 rounded-t h-[60%]"></div>
+            <div class="w-full bg-indigo-500 rounded-t h-[75%]"></div>
+            <div class="w-full bg-indigo-500 rounded-t h-[65%]"></div>
+            <div class="w-full bg-indigo-600 rounded-t h-[95%]"></div>
+          </div>
+          <div class="flex justify-between text-xs text-slate-400 pt-2 border-t border-slate-100 mt-2">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+        </div>
+
+        <div class="bg-cardBg p-[20px] rounded-[12px] border border-borderClr shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-[16px] font-semibold text-heading">Top Products</h2>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-[14px] text-left">
+              <thead>
+                <tr class="text-xs text-slate-400 border-b border-borderClr">
+                  <th class="pb-2 font-medium">Product</th>
+                  <th class="pb-2 font-medium">Sales</th>
+                  <th class="pb-2 font-medium">Change</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-borderClr">
+                <tr>
+                  <td class="py-3 font-medium text-heading">Laptop Pro</td>
+                  <td class="py-3">2,450</td>
+                  <td class="py-3 text-xs font-semibold text-successClr">+12%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Wireless Earbuds</td>
+                  <td class="py-3">1,892</td>
+                  <td class="py-3 text-xs font-semibold text-successClr">+8%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Smart Watch</td>
+                  <td class="py-3">1,203</td>
+                  <td class="py-3 text-xs font-semibold text-successClr">+6%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 font-medium text-heading">Backpack</td>
+                  <td class="py-3">982</td>
+                  <td class="py-3 text-xs font-semibold text-successClr">+4%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
