@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowTask - SaaS Landing Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#4F46E5',
+              hover: '#4338CA',
+            },
+            heading: '#0F172A',
+            body: '#475569',
+            bgMain: '#F8FAFC',
+            borderClr: '#E2E8F0',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-bgMain font-sans text-body min-h-screen flex flex-col items-center">
+
+  <div class="w-full max-w-[1200px] px-6">
+
+    <header class="h-[72px] flex items-center justify-between border-b border-borderClr">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-white font-bold text-lg">
+          F
+        </div>
+        <span class="font-bold text-lg text-heading">FlowTask</span>
+      </div>
+
+      <nav class="hidden sm:flex items-center space-x-8 text-[14px] font-medium">
+        <a href="#" class="hover:text-brand transition-colors">Features</a>
+        <a href="#" class="hover:text-brand transition-colors">Pricing</a>
+        <a href="#" class="hover:text-brand transition-colors">Docs</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center space-x-4 text-[14px] font-medium">
+        <a href="#" class="text-heading hover:text-brand transition-colors">Login</a>
+        <a href="#" class="bg-brand hover:bg-brand-hover text-white px-4 py-2 rounded-lg transition-colors">
+          Get Started
+        </a>
+      </div>
+
+      <button class="sm:hidden p-2 text-heading hover:text-brand focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </header>
+
+    <section class="mt-[80px] min-h-[520px] flex items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+        
+        <div class="max-w-[650px] text-center sm:text-left mx-auto lg:mx-0">
+          
+          <span class="inline-block bg-indigo-100 text-brand text-xs font-semibold px-3 py-1 rounded-full mb-4">
+            Work Smarter
+          </span>
+
+          <h1 class="text-[36px] sm:text-[48px] font-bold text-heading leading-[1.1]">
+            Build Better Products Faster With Our Platform
+          </h1>
+
+          <p class="mt-[20px] text-[18px] leading-[1.6] text-body">
+            Streamline your workflow, collaborate with your team, and ship faster with our all-in-one platform.
+          </p>
+
+          <div class="mt-[32px] flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <a href="#" class="w-full sm:w-auto text-center bg-brand hover:bg-brand-hover text-white font-medium px-6 py-3 rounded-lg transition-colors text-[16px]">
+              Get Started
+            </a>
+            <a href="#" class="w-full sm:w-auto text-center border border-borderClr bg-white hover:bg-gray-50 text-heading font-medium px-6 py-3 rounded-lg transition-colors text-[16px]">
+              View Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="w-full max-w-[480px] bg-white border border-borderClr rounded-2xl p-6 shadow-sm">
+            <div class="h-48 bg-indigo-50/50 rounded-xl border border-indigo-100 flex items-center justify-center text-brand font-medium">
+              Dashboard Preview
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="mt-[80px] mb-20">
+      
+      <div class="text-center">
+        <h2 class="text-[32px] font-bold text-heading">Powerful Features</h2>
+        <p class="text-[16px] text-body mt-2">Everything you need to build, manage, and grow your product.</p>
+      </div>
+
+      <div class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        
+        <div class="bg-white border border-borderClr rounded-xl p-[24px] transition-shadow hover:shadow-md">
+          <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand mb-4">
+            ⚡
+          </div>
+          <h3 class="text-[20px] font-semibold text-heading mb-2">Fast &amp; Reliable</h3>
+          <p class="text-[16px] text-body leading-relaxed">
+            Experience blazing fast performance with 99.9% uptime guaranteed across all services.
+          </p>
+        </div>
+
+        <div class="bg-white border border-borderClr rounded-xl p-[24px] transition-shadow hover:shadow-md">
+          <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand mb-4">
+            👥
+          </div>
+          <h3 class="text-[20px] font-semibold text-heading mb-2">Team Collaboration</h3>
+          <p class="text-[16px] text-body leading-relaxed">
+            Work together seamlessly with real-time updates and integrated team workspaces.
+          </p>
+        </div>
+
+        <div class="bg-white border border-borderClr rounded-xl p-[24px] transition-shadow hover:shadow-md">
+          <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand mb-4">
+            🛡️
+          </div>
+          <h3 class="text-[20px] font-semibold text-heading mb-2">Secure by Design</h3>
+          <p class="text-[16px] text-body leading-relaxed">
+            Your data is always protected with enterprise-grade encryption and access controls.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
