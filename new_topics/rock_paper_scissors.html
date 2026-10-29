@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <p>Play against the computer.</p>
+    <button type="button" data-choice="rock">Rock</button>
+    <button type="button" data-choice="paper">Paper</button>
+    <button type="button" data-choice="scissors">Scissors</button>
+    <p>Player Score: <span id="playerScore">0</span></p>
+    <p>Computer Score: <span id="computerScore">0</span></p>
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function updateScore() {
+            document.getElementById("playerScore").textContent = playerScore;
+            document.getElementById("computerScore").textContent = computerScore;
+        }
+
+        function resetGame() {
+            playerScore = 0;
+            computerScore = 0;
+            updateScore();
+        }
+
+        function playRound(playerChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            if (playerChoice === computerChoice) {
+                alert("It's a tie! Both chose " + playerChoice + ".");
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "scissors" && computerChoice === "paper")
+            ) {
+                playerScore++;
+                alert("You win this round! " + playerChoice + " beats " + computerChoice + ".");
+            } else {
+                computerScore++;
+                alert("Computer wins this round! " + computerChoice + " beats " + playerChoice + ".");
+            }
+
+            if (playerScore === 3) {
+                alert("Congratulations! You won the match!");
+                resetGame();
+            } else if (computerScore === 3) {
+                alert("Computer won the match! Better luck next time.");
+                resetGame();
+            }
+
+            updateScore();
+        }
+
+        document.querySelectorAll("[data-choice]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                playRound(button.dataset.choice);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .cell {
+            height: 80px;
+            border: 1px solid black;
+            display: grid;
+            place-items: center;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Whack-a-Mole</h1>
+    <p>Click the mole when it appears.</p>
+    <div id="grid"></div>
+    <p>Score: <span id="score">0</span></p>
+    <script>
+        const grid = document.getElementById("grid");
+        const scoreText = document.getElementById("score");
+        let score = 0;
+        let moleInterval;
+        const gameDuration = 30000;
+
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement("div");
+            cell.className = "cell";
+            grid.appendChild(cell);
+        }
+
+        function showMole() {
+            const cells = grid.children;
+            const randomIndex = Math.floor(Math.random() * cells.length);
+            const moleCell = cells[randomIndex];
+            moleCell.textContent = "🐹";
+            moleCell.dataset.mole = "true";
+
+            setTimeout(function () {
+                moleCell.textContent = "";
+                delete moleCell.dataset.mole;
+            }, 800);
+        }
+
+        grid.addEventListener("click", function (event) {
+            if (event.target.dataset.mole === "true") {
+                score++;
+                scoreText.textContent = score;
+                event.target.textContent = "";
+                delete event.target.dataset.mole;
+            }
+        });
+
+        function endGame() {
+            clearInterval(moleInterval);
+            alert("Game over! Your final score is: " + score);
+            score = 0;
+            scoreText.textContent = score;
+        }
+
+        moleInterval = setInterval(showMole, 800);
+        setTimeout(endGame, gameDuration);
+    </script>
+</body>
+</html>

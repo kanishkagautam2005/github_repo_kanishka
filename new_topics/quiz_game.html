@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        button {
+            margin: 4px;
+            padding: 8px 12px;
+        }
+
+        .correct {
+            background: lightgreen;
+        }
+
+        .wrong {
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <main id="quiz">
+        <h1>JavaScript Quiz</h1>
+        <p id="progress"></p>
+        <p id="score">Score: 0</p>
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <p id="explanation"></p>
+        <button id="next" type="button" disabled>Next Question</button>
+    </main>
+    <script>
+        const questions = [
+            {
+                question: "Which keyword declares a variable?",
+                options: ["let", "print", "echo", "show"],
+                answer: 0,
+                explanation: "let is used to declare a variable."
+            },
+            {
+                question: "Which function prints output in the console?",
+                options: ["print()", "console.log()", "echo()", "display()"],
+                answer: 1,
+                explanation: "console.log() prints messages in the console."
+            },
+            {
+                question: "Which symbol checks strict equality?",
+                options: ["=", "==", "===", "!="],
+                answer: 2,
+                explanation: "=== compares values without type conversion."
+            },
+            {
+                question: "Which keyword declares a constant?",
+                options: ["var", "let", "const", "fixed"],
+                answer: 2,
+                explanation: "const declares a variable that cannot be reassigned."
+            },
+            {
+                question: "What is 2 + '3' in JavaScript?",
+                options: ["5", "23", "6", "Error"],
+                answer: 1,
+                explanation: "JavaScript joins the number and string to produce '23'."
+            }
+        ];
+
+        const progress = document.getElementById("progress");
+        const scoreText = document.getElementById("score");
+        const questionText = document.getElementById("question");
+        const options = document.getElementById("options");
+        const explanation = document.getElementById("explanation");
+        const nextButton = document.getElementById("next");
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function showQuestion() {
+            answered = false;
+            progress.textContent = "Question " + (currentQuestion + 1) + "/" + questions.length;
+            scoreText.textContent = "Score: " + score;
+            questionText.textContent = questions[currentQuestion].question;
+            explanation.textContent = "";
+            nextButton.disabled = true;
+            options.replaceChildren();
+
+            questions[currentQuestion].options.forEach(function (option, index) {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = option;
+                button.addEventListener("click", function () {
+                    checkAnswer(index);
+                });
+                options.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selected) {
+            if (answered) return;
+            answered = true;
+
+            const current = questions[currentQuestion];
+            const buttons = options.querySelectorAll("button");
+
+            if (selected === current.answer) {
+                score++;
+                buttons[selected].classList.add("correct");
+            } else {
+                buttons[selected].classList.add("wrong");
+                buttons[current.answer].classList.add("correct");
+            }
+
+            buttons.forEach(function (button) {
+                button.disabled = true;
+            });
+            scoreText.textContent = "Score: " + score;
+            explanation.textContent = current.explanation;
+            nextButton.disabled = false;
+        }
+
+        function showResults() {
+            const percentage = Math.round(score / questions.length * 100);
+            let rating = "Keep practising!";
+
+            if (percentage >= 80) {
+                rating = "Excellent!";
+            } else if (percentage >= 60) {
+                rating = "Good job!";
+            }
+
+            document.getElementById("quiz").innerHTML =
+                "<h1>Quiz Completed!</h1><h2>Final Score: " + score + "/" + questions.length +
+                "</h2><h2>Percentage: " + percentage + "%</h2><h2>" + rating +
+                "</h2><button onclick=\"location.reload()\">Try Again</button>";
+        }
+
+        nextButton.addEventListener("click", function () {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        showQuestion();
+    </script>
+</body>
+</html>

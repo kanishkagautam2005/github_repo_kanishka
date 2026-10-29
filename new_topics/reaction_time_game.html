@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #reactionTime {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="reactionTime">Reaction Time: 0 ms</div>
+    <script>
+        let startTime;
+        let bestTime = Infinity;
+
+        function startGame() {
+            const delay = Math.floor(Math.random() * 4000) + 1000;
+            document.body.style.backgroundColor = "red";
+
+            setTimeout(function () {
+                document.body.style.backgroundColor = "green";
+                startTime = Date.now();
+            }, delay);
+        }
+
+        document.body.addEventListener("click", function () {
+            if (document.body.style.backgroundColor === "green") {
+                const reactionTime = Date.now() - startTime;
+                document.getElementById("reactionTime").textContent = "Reaction Time: " + reactionTime + " ms";
+
+                if (reactionTime < bestTime) {
+                    bestTime = reactionTime;
+                    alert("New Best Reaction Time: " + bestTime + " ms");
+                }
+
+                startGame();
+            }
+        });
+
+        startGame();
+    </script>
+</body>
+</html>
